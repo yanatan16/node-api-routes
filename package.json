@@ -4,7 +4,8 @@
   "version": "0.1.0",
   "author": "Jon Eisen <jon.m.eisen@gmail.com>",
   "scripts": {
-    "example": "node example/server.js"
+    "example": "node example/server.js",
+    "test": "nodeunit tests"
   },
   "devDependencies": {
     "request": "~2.23.0"

@@ -52,6 +52,14 @@ tests.authFail = function (test) {
 	});
 };
 tests.authPass = makeTest('get', '/authtest?auth=true', 'authenticated!');
+tests.authFail = function (test) {
+	request('http://localhost:8000/api/authtest2', function (err, res, body) {
+		test.ifError(err);
+		test.equal(403, res.statusCode);
+		test.done();
+	});
+};
+tests.authPass = makeTest('get', '/authtest2?auth=true', 'authenticated!');
 
 tests.final = function (test) {
 	server.close(test.done);
