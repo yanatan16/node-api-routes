@@ -1,0 +1,24 @@
+{
+  "name": "api-routes",
+  "description": "A declarative system for creating express API routes.",
+  "version": "0.0.1",
+  "author": "Jon Eisen <jon.m.eisen@gmail.com>",
+  "scripts": {
+    "example": "node example/server.js"
+  },
+  "devDependencies": {
+  },
+  "keywords": [
+    "express",
+    "connect",
+    "api",
+    "router"
+  ],
+  "repository": "git://github.com/yanatan16/node-api-routes.git",
+  "main": "lib/index",
+  "dependencies": {
+    "require-all": "0.0.6",
+    "underscore": "~1.5.1",
+    "express": "~3.3.4"
+  }
+}
