@@ -20,7 +20,7 @@ api.endpoint('base', {
 	url: '',
 	help: 'Base route',
 	get: function (req, res) {
-		res.send({method:'get', endpoint: 'base'});
+		res.send('base route!');
 	}
 });
 
@@ -32,7 +32,7 @@ api.requireAll({
 // Setup the middleware
 app.use(api.router);
 
-var server = http.createServer(app).listen(8000, function(){
+module.exports = http.createServer(app).listen(8000, function(){
 	console.log("Api server listening on port 8000 at route /api");
 });
 
