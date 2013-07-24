@@ -7,8 +7,6 @@ A declarative system for creating express API routes. It has a few goals:
 - Allow all the usual express helpers (middleware, parameters, etc)
 - Be RESTful and create OPTIONS endpoints to help developers.
 
-In order to support those goals, routes are defined in as many files as desired, express helpers are fully available, and declaring methods for a CRUD endpoint implicitly creates an OPTIONS verb.
-
 ## Install & Usage
 
 ```
@@ -18,6 +16,7 @@ npm install api-routes --save
 In your express app declaration:
 
 ```javascript
+var Api = require('api-routes');
 var api = new Api('/api' /* base route */);
 
 // You can add routes right here
@@ -30,8 +29,12 @@ api.endpoint('base', {
 });
 
 // Or use the more organized requireAll
+// See below for examples on how files should be organized.
 api.requireAll({
-	dirname: __dirname + '/routes'
+	// Same options as require-all package
+	dirname: __dirname + '/routes',
+  filter      :  /(.*)\.js$/, // optional
+  excludeDirs :  /^\.(git|svn)$/ //optional
 });
 
 // Setup the middleware
@@ -94,6 +97,9 @@ $ curl localhost:8000/api/test -XOPTIONS
 		"delete"
 	]
 }
+```
+
+Other features include inheritance via adding sub-endpoints using a period in the name, such as 'test.abc' being a child of endpoint 'test'. There is an example to show how to use this.
 
 ## License
 
