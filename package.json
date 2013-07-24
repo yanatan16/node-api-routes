@@ -1,7 +1,7 @@
 {
   "name": "api-routes",
   "description": "A declarative system for creating express API routes.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Jon Eisen <jon.m.eisen@gmail.com>",
   "scripts": {
     "example": "node example/server.js",
@@ -21,6 +21,7 @@
   "dependencies": {
     "require-all": "0.0.6",
     "underscore": "~1.5.1",
-    "express": "~3.3.4"
+    "express": "~3.3.4",
+    "debug": "~0.7.2"
   }
 }
