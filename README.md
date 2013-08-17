@@ -99,7 +99,7 @@ $ curl localhost:8000/api/test -XOPTIONS
 }
 ```
 
-Other features include inheritance via adding sub-endpoints using a period in the name, such as 'test.abc' being a child of endpoint 'test'. There is an example to show how to use this.
+Other features include inheritance via adding sub-endpoints using a period in the name, such as 'test.abc' being a child of endpoint 'test'. There is an example to show how to use this in the examples.
 
 ## License
 
