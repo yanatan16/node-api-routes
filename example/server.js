@@ -32,8 +32,10 @@ api.requireAll({
 // Setup the middleware
 app.use(api.router);
 
-module.exports = http.createServer(app).listen(8000, function(){
-	console.log("Api server listening on port 8000 at route /api");
-});
+module.exports = function (port) {
+	return http.createServer(app).listen(port, function(){
+		console.log("Api server listening on port "+port+" at route /api");
+	});
+}
 
 //=============
