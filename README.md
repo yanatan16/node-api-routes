@@ -99,7 +99,35 @@ $ curl localhost:8000/api/test -XOPTIONS
 }
 ```
 
-Other features include inheritance via adding sub-endpoints using a period in the name, such as 'test.abc' being a child of endpoint 'test'. There is an example to show how to use this in the examples.
+## Easy URL Sub-Paths via Inheritance
+  
+Let's imagine you want the following endpoints: `/users`, `/users/:id`, `/users/:id/profile_pic`, `users/:id/reputation`
+
+Using inheritance, you can set this up cleanly:
+
+```javascript
+module.exports = {
+    api.endpoint('users', {
+        url: '/users',
+        post: function(req, res) {}
+    })
+    
+    api.endpoint('users.user', {
+        url: '/:id',
+        get: function(req, res) {}
+    })
+    
+    api.endpoint('users.user.pic', {
+        url: '/profile_pic',
+        get: function(req, res) {}
+    })
+    
+    api.endpoint('users.user.reputation', {
+        url: '/reputation',
+        get: function(req, res) {}
+    })
+}
+```
 
 ## License
 
