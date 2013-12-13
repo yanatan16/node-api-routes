@@ -5,9 +5,11 @@ module.exports = function (api) {
 		url:'/inheritance',
 		help: 'Showing how to inherit routes.',
 
+    middleware: function (req, res, next) { req.tosay = 'my'; next() },
+
 		// You can put middleware here
 		get: function (req, res) {
-			res.send({method: 'get', endpoint: 'inheritance'});
+			res.send({method: 'get', endpoint: 'inheritance', tosay: req.tosay});
 		}
 	})
 
@@ -18,9 +20,14 @@ module.exports = function (api) {
 		// You can include custom fields in the OPTIONS JSON response.
 		seealso: '/inheritance',
 
+    middleware: [
+      function (req, res, next) { req.tosay = 'name'; next() },
+      function (req, res, next) { req.tosay += 'is'; next() }
+    ],
+
 		// You can put middleware here
 		get: function (req, res) {
-			res.send({method: 'get', endpoint: 'inheritance.chain'});
+			res.send({method: 'get', endpoint: 'inheritance.chain', tosay: req.tosay});
 		}
 	})
 };

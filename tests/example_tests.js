@@ -42,9 +42,9 @@ tests.testOptions = makeTest('options', '/test', {
 
 tests.test2 = makeTest('get', '/test/123', 'Your user id is 123');
 
-tests.inheritance = makeTest('get', '/inheritance', {method:'get', endpoint: 'inheritance'});
+tests.inheritance = makeTest('get', '/inheritance', {method:'get', endpoint: 'inheritance', tosay: 'my'});
 tests.inheritanceChain = makeTest('get', '/inheritance/chain', {
-	method:'get', endpoint:'inheritance.chain'
+	method:'get', endpoint:'inheritance.chain', tosay: 'mynameis'
 });
 
 tests.reorderA = makeTest('get', '/a/b', {name: 'b'});
