@@ -1,7 +1,7 @@
 {
   "name": "api-routes",
   "description": "A declarative system for creating express API routes.",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "author": "Jon Eisen <jon.m.eisen@gmail.com>",
   "scripts": {
     "example": "node example/server.js",
