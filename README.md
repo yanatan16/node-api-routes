@@ -61,6 +61,12 @@ module.exports = function (api) {
 		// Add as many extra fields as you'd like (also included in OPTIONS)
 		seealso: '/my-other-route',
 
+    // middleware for every request (and every inherited request)
+    middleware: [ someMiddleware(), someOtherMiddleware() ],
+
+    // middleware for only POST, PUT, and DELETE
+    edit_middleware: [ someAuthMiddleware() ],
+
 		// Set the method handlers
 		get: function (req, res) {
 			res.send('gotten');
@@ -68,9 +74,12 @@ module.exports = function (api) {
 		post: function (req, res) {
 			res.send('posters');
 		},
-		delete: function (req, res) {
-			res.send('beleted!');
-		}
+		delete: [
+      someExtraMiddleware(),
+      function (req, res) {
+  			res.send('beleted!');
+  		}
+    ]
 	});
 
 };
@@ -100,7 +109,7 @@ $ curl localhost:8000/api/test -XOPTIONS
 ```
 
 ## Easy URL Sub-Paths via Inheritance
-  
+
 Let's imagine you want the following endpoints: `/users`, `/users/:id`, `/users/:id/profile_pic`, `users/:id/reputation`
 
 Using inheritance, you can set this up cleanly:
@@ -111,17 +120,17 @@ module.exports = {
         url: '/users',
         post: function(req, res) {}
     })
-    
+
     api.endpoint('users.user', {
         url: '/:id',
         get: function(req, res) {}
     })
-    
+
     api.endpoint('users.user.pic', {
         url: '/profile_pic',
         get: function(req, res) {}
     })
-    
+
     api.endpoint('users.user.reputation', {
         url: '/reputation',
         get: function(req, res) {}

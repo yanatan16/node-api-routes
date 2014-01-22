@@ -7,10 +7,16 @@ module.exports = function (api) {
 
     middleware: function (req, res, next) { req.tosay = 'my'; next() },
 
+    edit_middleware: function (req, res, next) { req.tosay += 'yolo' },
+
 		// You can put middleware here
 		get: function (req, res) {
 			res.send({method: 'get', endpoint: 'inheritance', tosay: req.tosay});
-		}
+		},
+
+    post: function (req, res) {
+      res.send({method: 'post', endpoint: 'inheritance.chain', tosay: req.tosay});
+    }
 	})
 
 	.endpoint('inheritance.chain', /* magical inheritance notation with the period */ {
@@ -28,7 +34,11 @@ module.exports = function (api) {
 		// You can put middleware here
 		get: function (req, res) {
 			res.send({method: 'get', endpoint: 'inheritance.chain', tosay: req.tosay});
-		}
+		},
+
+    post: function (req, res) {
+      res.send({method: 'post', endpoint: 'inheritance.chain', tosay: req.tosay});
+    }
 	})
 };
 
